@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../configs/config.js');
+const { JWT_SECRET } = require('../config.js');
 
 const authMiddleware = async (req, res, next) => {
     const accessToken = req.cookies.accessToken;
