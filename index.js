@@ -4,6 +4,7 @@ const multer = require('multer');
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
+const mainRoutes = require('./routes/main');
 
 const app = express();
 var upload = multer();
@@ -13,8 +14,11 @@ const mongoURI = "mongodb+srv://bekatop1gg:GGgsF9ZGc4R59Rfs@cars.dg4sc3h.mongodb
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
+app.use(upload.array());
 // for parsing application/xwww-
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(mainRoutes);
 
 async function start() {
     try {
