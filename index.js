@@ -15,6 +15,11 @@ const mongoURI = "mongodb+srv://bekatop1gg:GGgsF9ZGc4R59Rfs@cars.dg4sc3h.mongodb
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 
+// app.use(express.static(path.join(__dirname, 'styles')));
+// app.use(express.static(path.join(__dirname, 'images')));
+app.use('/styles', express.static(path.join(__dirname, '/styles')));
+app.use('/images', express.static(path.join(__dirname, '/images')));
+
 app.use(bodyParser.json());
 app.use(upload.array());
 // for parsing application/xwww-
