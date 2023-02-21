@@ -12,8 +12,8 @@ var upload = multer();
 const PORT = process.env.PORT || 5000;
 const mongoURI = "mongodb+srv://bekatop1gg:GGgsF9ZGc4R59Rfs@cars.dg4sc3h.mongodb.net/Janym"
 
-app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate)
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(upload.array());
