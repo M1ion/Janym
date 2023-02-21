@@ -5,10 +5,11 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const mainRoutes = require('./routes/main');
+const authRouter = require('./routes/auth.js');
 const ejsMate = require('ejs-mate')
 
 const app = express();
-var upload = multer();
+const upload = multer();
 const PORT = process.env.PORT || 5000;
 const mongoURI = "mongodb+srv://bekatop1gg:GGgsF9ZGc4R59Rfs@cars.dg4sc3h.mongodb.net/Janym"
 
@@ -26,6 +27,7 @@ app.use(upload.array());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(mainRoutes);
+app.use('/auth', authRouter);
 
 async function start() {
     try {
