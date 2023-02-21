@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const {JWT_SECRET} = require('../config.js');
+const {JWT_SECRET, JWT_EXP, REFRESH_SECRET} = require('../config.js');
+
 const extractPayload = (decryptedToken) => {
     const {iat, exp, ...payload} = decryptedToken;
     return payload;

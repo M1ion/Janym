@@ -1,10 +1,11 @@
 {
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
+  "name": "janym",
+  "version": "1.0.0",
+  "description": "Advanced Databases Final Project 5th trimesmer",
+  "main": "index.js",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "ejs-mate": "^4.0.0",
@@ -13,7 +14,22 @@
     "mongoose": "^6.9.2",
     "multer": "^1.4.5-lts.1"
   },
-    "devDependencies": {
-        "nodemon": "^2.0.20"
-    }
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/M1ion/Janym.git"
+  },
+  "author": "Bektas Turzhanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/M1ion/Janym/issues"
+  },
+  "homepage": "https://github.com/M1ion/Janym#readme"
 }
