@@ -1,5 +1,12 @@
+.imageStyle{
+    text-align: center;
+    overflow: hidden;
+}
+
 .imageStyle img{
     width:50%;
-    height:50%;
+    height: 50%;
     object-fit:cover;
 }
+
+
