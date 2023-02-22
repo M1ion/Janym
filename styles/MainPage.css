@@ -1,12 +1,29 @@
+body{
+    background-color: pink;
+}
 .imageStyle{
     text-align: center;
     overflow: hidden;
 }
 
 .imageStyle img{
-    width:50%;
-    height: 50%;
+    width:40%;
+    height: 40%;
     object-fit:cover;
 }
-
-
+.MainPageLogo{
+    padding-left: 3em;
+}
+.nav-item{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.LogoProp{
+    width: 4em;
+}
+ul{
+    list-style-type: none
+}
+li{
+    list-style-type: none
+}
