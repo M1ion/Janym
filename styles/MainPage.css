@@ -1,29 +1,154 @@
-body{
-    background-color: pink;
-}
-.imageStyle{
+.imageStyle {
     text-align: center;
     overflow: hidden;
 }
 
-.imageStyle img{
-    width:40%;
+.imageStyle img {
+    width: 40%;
     height: 40%;
-    object-fit:cover;
+    object-fit: cover;
 }
-.MainPageLogo{
+
+.MainPageLogo {
     padding-left: 3em;
 }
-.nav-item{
+
+.nav-item {
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
-.LogoProp{
+
+.LogoProp {
     width: 4em;
 }
-ul{
+
+ul {
     list-style-type: none
 }
-li{
+
+li {
     list-style-type: none
+}
+
+/*
+css for quiz
+*/
+body {
+    background-color: #eee;
+}
+
+label.radio {
+    cursor: pointer;
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+label.radio span {
+    padding: 4px 0px;
+    border: 1px solid red;
+    display: inline-block;
+    color: red;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+    margin-top: 7px;
+    text-transform: uppercase;
+}
+
+label.radio input:checked+span {
+    border-color: red;
+    background-color: red;
+    color: #fff;
+}
+
+.ans {
+    margin-left: 36px !important;
+}
+
+.btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.btn:active {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+
+
+
+
+
+.addtxt {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 13px;
+    width: 350px;
+    background-color: #e5e8ed;
+    font-weight: 500;
+}
+    
+
+
+.second {
+    width: 350px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.text1 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #56575b;
+}
+
+.text2 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+    color: #56575b;
+}
+
+.text3 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 4px;
+    color: #828386;
+}
+
+.text3o {
+    color: #00a5f4;
+}
+
+.text4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #828386;
+}
+.container{ 	background-color: #eef2f5; 	width: 400px; }
+.text4i {
+    color: #00a5f4;
+}
+
+.text4o {
+    color: white;
+}
+
+.thumbup {
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.thumbupo {
+    color: #17a2b8;
 }
