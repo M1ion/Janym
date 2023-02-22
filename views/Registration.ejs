@@ -1,1 +1,34 @@
-REGISTRATION
+<% layout("layouts/standart") %>
+<form method="post" action="/auth/sign_up">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      placeholder="Enter username"
+      name="username"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Enter password"
+      name="password"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="Enter email"
+      name="email"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

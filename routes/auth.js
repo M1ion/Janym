@@ -31,13 +31,13 @@ const signIn = async (req, res, next) => {
 };
 
 const signUp = async (req, res, next) => {
-    const {username, password} = req.body;
+    const {username, password, email} = req.body;
 
     if (!username || !password) {
         return res.status(400).json({message: 'Username and password are required!'});
     }
 
-    const user = {username, password};
+    const user = {username, password, email};
 
     const newUser = await User.create(user);
 
@@ -104,5 +104,6 @@ router.get('/secret', secretPage);
 router.get('/sign_out', signOut);
 router.get('/init', initDB);
 router.get('/all', getAll);
+router.post('/change', changeUser);
 
 module.exports = router;
