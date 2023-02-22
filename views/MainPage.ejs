@@ -1,4 +1,46 @@
-<% include('../layouts/standart') %>
-<div>
-    <h1> Hello </h1>
-</div>
+<% layout("layouts/standart") %>
+<!DOCTYPE html>
+  <div class="imageStyle">
+    <img src="../images/couple1.jpg" alt="couples">
+  </div>
+
+  <section>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <img src="" alt="logo" style="max-width: 200px;">
+      <p>Janym is a place for love, where you can boost it or find it. </p>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h2>Tutorial</h2>
+      <p>Here's a brief overview of the pages on our website:</p>
+      <ul>
+        <li>
+          <h4>Profile</h4>
+          <p>A page where you can view and edit your personal information and preferences.</p>
+          <a href="/profile" class="btn btn-primary">Go to Profile</a>
+        </li>
+        <li>
+          <h4>Quiz</h4>
+          <p>A page where you can take a compatibility quiz to help find potential matches.</p>
+          <a href="/quiz" class="btn btn-primary">Take the Quiz</a>
+        </li>
+        <li>
+          <h4>Couple</h4>
+          <p>A page where you can view your matches and connect with potential partners.</p>
+          <a href="/couple" class="btn btn-primary">View Matches</a>
+        </li>
+        <li>
+          <h4>Desires</h4>
+          <p>A page where you can view and express your desires and interests to help find like-minded individuals.</p>
+          <a href="/desires" class="btn btn-primary">View Desires</a>
+        </li>
+        <li>
+          <h4>Event</h4>
+          <p>A page where you can view upcoming events and activities related to your interests and preferences.</p>
+          <a href="/event" class="btn btn-primary">View Events</a>
+        </li>
+      </ul>
+    </div>
+  </section>
