@@ -28,6 +28,8 @@ router.get("/profile", async (req, res) => {
 
   const foundImage = await image.findById(userFound.photoUrl);
 
+  const eventsOfUser = await event.find({coupleId: userFound._id});
+
   res.render("Profile", {
     name: userFound.username,
     username: req.loggedIn,
@@ -46,7 +48,8 @@ router.get("/profile", async (req, res) => {
     proposals: userFound.proposals,
     id: userFound._id,
     image: foundImage,
-    coupleId: userFound.coupleId
+    coupleId: userFound.coupleId,
+    events: eventsOfUser,
   });
 });
 
