@@ -107,7 +107,8 @@ router.get("/follow/:id", async (req, res, next) => {
   }
   coupleFound.proposals.push(userFound._id);
   await coupleFound.save();
-  res.redirect(req.get("referer"));
+  //res.redirect(req.get("referer"));
+  res.render("Profile");
 });
 
 router.get("/couple", async (req, res) => {
