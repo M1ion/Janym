@@ -1,4 +1,5 @@
 const { Schema, model, mongoose } = require('mongoose')
+const { ObjectId } = require('mongoose').Types;
 
 const userSchema = new Schema({
     username: {
@@ -15,8 +16,11 @@ const userSchema = new Schema({
         required: true
     },
     coupleId:{
-        type: Number
-    }
-})
+        type: {type: ObjectId, ref: 'user'},
+    },
+    proposals: [{
+        type: {type: ObjectId, ref: 'user'},
+    }],
+});
 
 module.exports = model('user', userSchema)
