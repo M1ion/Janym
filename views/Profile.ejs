@@ -121,7 +121,7 @@
                 <p class="mb-0">Bio</p>
               </div>
               <div class="col-sm-9">
-                <% if (socalMedia) { %>
+                <% if (bio) { %>
                 <p class="text-muted mb-0"><%= bio %></p>
                 <% } else { %>
                 <p class="mb-0">no information about bio</p>
@@ -183,10 +183,14 @@
               <!-- Password -->
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Password</p>
+                  <p class="mb-0">Bio</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= couple.password %></p>
+                  <% if (couple.socalMedia) { %>
+                  <p class="text-muted mb-0"><%= couple.bio %></p>
+                  <% } else { %>
+                  <p class="mb-0">no information about bio</p>
+                  <% } %>
                 </div>
               </div>
             </div>
