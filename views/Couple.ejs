@@ -5,7 +5,8 @@
     <% for (let i = 0; i < users.length; i++) { %>
       <div class="col-md-4">
         <div class="card mb-4 box-shadow">
-          <img class="card-img-top" src="https://source.unsplash.com/random" alt="User Photo">
+          <img class="card-img-top" src="data:image/<%=images[i].img.contentType%>;base64,
+					<%=images[i].img.data.toString('base64')%>" alt="User Photo">
           <div class="card-body">
             <h5 class="card-title"><%= users[i].username %></h5>
             <p class="card-text"><%= users[i].email %></p>
