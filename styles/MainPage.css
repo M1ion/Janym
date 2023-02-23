@@ -7,6 +7,7 @@
     width: 40%;
     height: 40%;
     object-fit: cover;
+    z-index: 1;
 }
 
 .MainPageLogo {
@@ -83,9 +84,6 @@ label.radio input:checked+span {
 
 
 
-
-
-
 .addtxt {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -155,3 +153,4 @@ footer {
 .thumbupo {
     color: #17a2b8;
 }
+
