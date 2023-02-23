@@ -8,7 +8,7 @@ const createError = require("http-errors");
 
 router.get("/", async (req, res) => {
   console.log(Boolean(req.user));
-  res.render("MainPage", { username: req.user.username, });
+  res.render("MainPage", { username: req.loggedIn, });
 });
 
 // isAuth добавить: router.get('', isAuth, async (req, res) => {
@@ -31,7 +31,7 @@ router.get("/profile", async (req, res) => {
   }
 
   res.render("Profile", {
-    username: req.user.username,
+    username: req.loggedIn,
     email: userFound.email,
     password: userFound.password,
     couple: coupleFound,
@@ -98,33 +98,33 @@ router.get("/follow/:id", async (req, res, next) => {
 });
 
 router.get("/couple", async (req, res) => {
-  res.render("Couple", { username: req.user.username, });
+  res.render("Couple", { username: req.loggedIn, });
 });
 
 router.get("/event", async (req, res) => {
-  res.render("Event", { username: req.user.username, });
+  res.render("Event", { username: req.loggedIn, });
 });
 
 router.get("/desires", async (req, res) => {
-  res.render("Desires", { username: req.user.username, });
+  res.render("Desires", { username: req.loggedIn, });
 });
 
 router.get("/quiz", async (req, res) => {
-  res.render("Quiz", { username: req.user.username, });
+  res.render("Quiz", { username: req.loggedIn, });
 });
 
 router.get("/login", async (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
   }
-  res.render("Login", { username: req.user.username, });
+  res.render("Login", { username: req.loggedIn, });
 });
 
 router.get("/register", async (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
   }
-  res.render("Registration", { username: req.user.username, });
+  res.render("Registration", { username: req.loggedIn, });
 });
 
 module.exports = router;
