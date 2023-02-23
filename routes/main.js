@@ -4,6 +4,7 @@ const user = require("../models/user.js");
 const event = require("../models/event.js")
 const createError = require("http-errors");
 const image = require("../models/image.js");
+const moment = require("moment")
 
 router.get("/", async (req, res) => {
   console.log(Boolean(req.user));
@@ -36,7 +37,7 @@ router.get("/profile", async (req, res) => {
     email: userFound.email,
     firstName: userFound.firstName,
     lastName: userFound.lastName,
-    DateOfBirth: userFound.DateOfBirth,
+    DateOfBirth: moment(userFound.DateOfBirth).format('MMMM Do YYYY'),
     gender: userFound.gender,
     country: userFound.country,
     city: userFound.city, 
