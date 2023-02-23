@@ -1,26 +1,28 @@
 <% layout("layouts/standart") %>
+<div class = "container mt-5 w-50 pt-3 pb-3 border rounded">
+
 <form method="post" action="/auth/sign_up">
   <div class="form-group">
-    <label for="username">Username</label>
+    <label class="mb-1" for="username">Username</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control mb-3"
       id="username"
       placeholder="Enter username"
       name="username"
     />
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label class ="mb-1"for="password">Password</label>
     <input
       type="password"
-      class="form-control"
+      class="form-control mb-4"
       id="password"
       placeholder="Enter password"
       name="password"
     />
   </div>
-  <div class="form-group">
+  <div class="form-group ">
     <label for="email">Email address</label>
     <input
       type="email"
@@ -30,5 +32,9 @@
       name="email"
     />
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="d-flex justify-content-center mt-3">
+
+    <button type="submit" class="btn btn-primary w-25">Submit</button>
+  </div>
 </form>
+  </div>
