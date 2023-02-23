@@ -1,4 +1,11 @@
 <% layout("layouts/standart") %>
+<head>
+  <!-- Other head elements -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
 <div class = "container mt-5 w-50 pt-3 pb-3 border rounded">
 
 <form method="post" action="/auth/sign_up">
@@ -32,9 +39,104 @@
       name="email"
     />
   </div>
+  <div class="form-group ">
+    <label for="firstName">First Name</label>
+    <input
+      type="firstname"
+      class="form-control"
+      id="firstName"
+      placeholder="Enter First Name"
+      name="firstName"
+    />
+  </div>
+  <div class="form-group ">
+    <label for="lastName">Last Name</label>
+    <input
+      type="lastName"
+      class="form-control"
+      id="lastName"
+      placeholder="Enter Last Name"
+      name="lastName"
+    />
+  </div>
+  <div class="form-group">
+    <label for="DateOfBirth">Date Of Birth</label>
+    <input type="text" class="form-control" id="datepicker" placeholder="Enter Date Of Birth" name="DateOfBirth" readonly>
+  </div>
+  
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select class="form-control" id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+  
+  <div class="form-group ">
+    <label for="country">Сountry</label>
+    <input
+      type="country"
+      class="form-control"
+      id="country"
+      placeholder="Enter country"
+      name="country"
+    />
+  </div>
+  <div class="form-group ">
+    <label for="city">city</label>
+    <input
+      type="city"
+      class="form-control"
+      id="city"
+      placeholder="Enter city"
+      name="city"
+    />
+  </div>
+  <div class="form-group ">
+    <label for="socalMedia">Socal Media</label>
+    <input
+      type="socalMedia"
+      class="form-control"
+      id="socalMedia"
+      placeholder="Enter uri for your social media"
+      name="socalMedia"
+    />
+  </div>
+  <div class="form-group ">
+    <label for="phoneNumber">Phone Number</label>
+    <input
+      type="phoneNumber"
+      class="form-control"
+      id="phoneNumber"
+      placeholder="Enter phone number"
+      name="phoneNumber"
+    />
+  </div>
+  <div class="form-group ">
+    <label for="bio">BIO</label>
+    <input
+      type="bio"
+      class="form-control"
+      id="bio"
+      placeholder="Enter bio"
+      name="bio"
+    />
+  </div>
   <div class="d-flex justify-content-center mt-3">
 
     <button type="submit" class="btn btn-primary w-25">Submit</button>
   </div>
 </form>
   </div>
+
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0",
+        dateFormat: "yy-mm-dd"
+      });
+    });
+  </script>
+  

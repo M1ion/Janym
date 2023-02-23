@@ -42,13 +42,13 @@ const signIn = async (req, res, next) => {
 };
 
 const signUp = async (req, res, next) => {
-  const { username, password, email } = req.body;
+  const { username, password, email, firstName, lastName, DateOfBirth, gender, country, city, bio, socalMedia, phoneNumber } = req.body;
 
   if (!username || !password || !email)  {
     return next(createError(400, "Username, password and email are required!"));
   }
 
-  const user = { username, password, email };
+  const user = { username, password, email, firstName, lastName, DateOfBirth, gender, country, city, bio, socalMedia, phoneNumber };
 
   try {
     const newUser = await User.create(user);

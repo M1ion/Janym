@@ -6,6 +6,33 @@ const userSchema = new Schema({
         type: String, 
         required: true
     },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    DateOfBirth: {
+        type: Date
+    },
+    gender: {
+        type: String
+    },
+    country: {
+        type: String
+    }, 
+    city: {
+        type: String
+    },
+    bio: {
+        type: String
+    },
+    socalMedia: {
+        type: String
+    },
+    phoneNumber: {
+        type: String
+    },
     email:{
         type: String,
         unique: true, 

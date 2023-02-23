@@ -32,11 +32,21 @@ router.get("/profile", async (req, res) => {
     name: userFound.username,
     username: req.loggedIn,
     email: userFound.email,
+    firstName: userFound.firstName,
+    lastName: userFound.lastName,
+    DateOfBirth: userFound.DateOfBirth,
+    gender: userFound.gender,
+    country: userFound.country,
+    city: userFound.city, 
+    bio: userFound.bio, 
+    socalMedia: userFound.socalMedia,
+    phoneNumber: userFound.phoneNumber,
     password: userFound.password,
     couple: coupleFound,
     proposals: userFound.proposals,
     id: userFound._id,
     image: foundImage,
+    coupleId: userFound.coupleId
   });
 });
 
