@@ -18,7 +18,7 @@ router.get("/profile", async (req, res) => {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  console.log(userFound);
+  console.log('/profile', userFound);
   let coupleFound = null;
   if (
     userFound.coupleId &&
@@ -40,15 +40,23 @@ router.get("/profile", async (req, res) => {
   });
 });
 
-router.get('/accept/:id', async (req, res) => {
+router.get('/accept/:id', async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  if (!userFound.proposals.includes(req.params.id)) {
-    return next("400", "You don't have this proposal");
+  console.log('/accept/:id', JSON.stringify(userFound));
+  let found = false;
+  for (let proposal of userFound.proposals) {
+    console.log(proposal);
+    if (proposal._id == req.params.id) {
+      found = true;
+      break;
+    }
   }
-  const coupleFound = await couple.findOne({ _id: req.params.id });
+  if (!found) return next(createError(400, "You don't have this proposal"));
+  const coupleFound = await user.findById(req.params.id);
+  console.log('/accept/:id', JSON.stringify(coupleFound));
   userFound.coupleId = coupleFound._id;
   userFound.proposals = [];
   await userFound.save();
@@ -58,30 +66,32 @@ router.get('/accept/:id', async (req, res) => {
   res.redirect(req.get("referer"));
 });
 
-router.get('/decline/:id', async (req, res) => {
+router.get('/decline/:id', async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
   const coupleFound = await user.findOne({ _id: req.params.id });
   coupleFound.proposals = coupleFound.proposals.filter(
-    (proposal) => proposal != userFound._id
+    (proposal) => JSON.stringify(proposal._id) != JSON.stringify(userFound._id)
   );
   await coupleFound.save();
   res.redirect(req.get("referer"));
 });
   
 
-router.get("/follow/:id", async (req, res) => {
+router.get("/follow/:id", async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
   const coupleFound = await user.findOne({ _id: req.params.id });
-  if (userFound.couples && userFound.couples.includes(coupleFound._id)) {
+  if (coupleFound.couples && coupleFound.proposals.includes(coupleFound._id)) {
     return res.redirect(req.get("referer"));
   }
-  // userFound.couples.push(coupleFound._id);
+  if (JSON.stringify(userFound._id) == JSON.stringify(coupleFound._id)) {
+    return next(createError(400, "You can't follow yourself"));
+  }
   coupleFound.proposals.push(userFound._id);
   await coupleFound.save();
   res.redirect(req.get("referer"));
