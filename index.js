@@ -11,6 +11,7 @@ const refreshTokenMiddleware = require('./middlewares/refreshTokenMiddleware.js'
 const cookieParser = require('cookie-parser');
 const imageRouter = require('./routes/imageRouter');
 const morgan = require('morgan');
+const createError = require('http-errors');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,6 +36,21 @@ app.use(authMiddleware);
 app.use(mainRoutes);
 app.use('/auth', authRouter);
 app.use('/upload', imageRouter);
+
+app.use((req, res, next) => {
+    next(createError(404, 'Page not found'));
+});
+
+app.use((err, req, res, next) => {
+    const error = {
+        status: err.status || 500,
+        message: err.message || "Internal Server Error",
+        stack: err.stack || "No stack trace available"
+    };
+
+    res.status(error.status).render('error', { status: error.status, message: error.message, stack: error.stack });
+});
+
 
 async function start() {
     try {

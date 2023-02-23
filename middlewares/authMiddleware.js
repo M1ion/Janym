@@ -10,6 +10,7 @@ const authMiddleware = async (req, res, next) => {
                 return next();
             }
             req.user = decoded;
+            console.log('req.user', JSON.stringify(req.user));
             return next();
         });
     } else {

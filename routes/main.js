@@ -4,6 +4,7 @@ const user = require('../models/user')
 const couple = require('../models/couple');
 const desire = require('../models/desire');
 const event = require('../models/event');
+const createError = require('http-errors');
 
 router.get('/', async (req, res) => {
   res.render('MainPage');
@@ -11,7 +12,13 @@ router.get('/', async (req, res) => {
 
 // isAuth добавить: router.get('', isAuth, async (req, res) => {
 router.get('/profile', async (req, res) => {
-  res.render('Profile');
+  // res.render('Profile');
+  if (!req.user) {
+    return res.redirect('/auth/sign_in');
+  }
+  const user = await user.findById(req.user.username);
+
+  res.render('Profile', { user });
 })
 
 router.get('/couple', async (req, res) => {
