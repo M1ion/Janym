@@ -40,6 +40,8 @@ router.get("/profile", async (req, res) => {
   });
 });
 
+
+
 router.get("/accept/:id", async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
@@ -100,13 +102,62 @@ router.get("/follow/:id", async (req, res, next) => {
 
 router.get("/couple", async (req, res) => {
   const users = await user.find({});
-  res.render("Couple", { users, username: req.loggedIn });
+  const foundImages = [];
+  for (let user of users) {
+    const foundImage = await image.findById(user.photoUrl);
+    foundImages.push(foundImage);
+  }
+  res.render("Couple", { users, username: req.loggedIn, images: foundImages });
 });
 
 router.get("/event", async (req, res) => {
-  const events = await event.find({})
-  res.render("Event", { events, username: req.loggedIn });
+  const events = await event.find({});
+  const couples = [];
+  for (let event of events) {
+    // const couple = [event.coupleId[0], event.coupleId[1]];
+    const firstUser = await user.findById(event.coupleId[0]);
+    const secondUser = await user.findById(event.coupleId[1]);
+    const couple = [firstUser.username, secondUser.username];
+    couples.push(couple);
+  }
+  res.render("Event", { events, username: req.loggedIn, couples });
 });
+
+router.get('/add_event', async (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/login");
+  }
+  const currUser = await user.findOne({ username: req.user.username });
+  if (!currUser.coupleId) {
+    return next(createError(400, "You don't have a couple"));
+  }
+  res.render('AddEvent', { username: req.loggedIn });
+});
+
+router.post('/add_event', async (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/login");
+  }
+  const currUser = await user.findOne({ username: req.user.username });
+  if (!currUser.coupleId) {
+    return next(createError(400, "You don't have a couple"));
+  }
+  const {eventName, date, photoUrl} = req.body;
+  const obj = {
+    eventName,
+    coupleId:[currUser._id, currUser.coupleId]
+  };
+  if (date) {
+    obj.date = date;
+  }
+  if (photoUrl) {
+    obj.photoUrl = photoUrl;
+  }
+  const newEvent = new event(obj);
+  await newEvent.save();
+  res.redirect('/event');
+});
+
 
 router.get("/desires", async (req, res) => {
   res.render("Desires", { username: req.loggedIn });

@@ -10,18 +10,16 @@ const eventSchema = new Schema({
         required: true,
         default: new Date().toISOString().slice(0, 19).replace('T', ' '), 
       },
-      occasion: {
+      photoUrl: {
         type: String,
-        required: true
+        default: 'https://photos-kr.kcdn.kz/content/2d/1651260b5e7158fe3b-909-1-0-2021v-gorah-almaty-postroyat-15-hizhin-dlya-ukrytiya-turistov.jpg',
       },
-      photoURI: {
-        type: String,
-        required: true
-      },
-      coupleId: {
-        type: Number,
-        required: true
-      }
+      coupleId: [
+        {
+          type: String,
+          required: true,
+        },
+      ]
 })
 
 module.exports = model('event', eventSchema)

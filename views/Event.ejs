@@ -1,43 +1,24 @@
 <% layout("layouts/standart") %>
-
 <div class="container">
   <h1>Events</h1>
+
+  <a href="/add_event" class="btn btn-primary">Add Event</a>
+
   <div class="row">
-    <% events.forEach(function(event) { %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img class="card-img-top" src="<%= event.photoURI %>" alt="Event Image">
+    <% for (let i = 0; i < events.length; i++) { %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="<%= events[i].photoUrl %>" alt="Event Image">
           <div class="card-body">
-            <h5 class="card-title"><%= event.eventName %></h5>
-            <p class="card-text">Occasion: <%= event.occasion %></p>
-            <p class="card-text">Date: <%= event.date.toDateString() %></p>
-            <a href="/events/<%= event._id %>" class="btn btn-primary">View</a>
+            <h5 class="card-title"><%= events[i].eventName %></h5>
+            <p class="card-text"><%= events[i].date %></p>
+            <p class="card-text">Created by: <%= couples[i][0] %> and <%= couples[i][1] %></p>
           </div>
         </div>
       </div>
-    <% }); %>
+      <% if ((i + 1) % 3 === 0) { %>
+        </div><div class="row">
+      <% } %>
+    <% } %>
   </div>
-
-  <hr>
-
-  <h2>Add New Event</h2>
-  <form method="post" action="/events">
-    <div class="form-group">
-      <label for="eventName">Event Name</label>
-      <input type="text" class="form-control" id="eventName" name="eventName" required>
-    </div>
-    <div class="form-group">
-      <label for="occasion">Occasion</label>
-      <input type="text" class="form-control" id="occasion" name="occasion" required>
-    </div>
-    <div class="form-group">
-      <label for="photoURI">Photo URI</label>
-      <input type="text" class="form-control" id="photoURI" name="photoURI" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Event</button>
-  </form>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
