@@ -69,12 +69,19 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img
-              src="../images/profilepic.jpg"
+            <!-- <img
+              src="<%= image %>"
               alt="avatar"
               class="rounded img-fluid"
               style="width: 150px"
-            />
+            /> -->
+            <img
+            src="data:image/<%=image.img.contentType%>;base64,
+					<%=image.img.data.toString('base64')%>"
+          alt="avatar"
+              class="rounded img-fluid"
+              style="width: 150px"
+          />
             <h5 class="my-3">Happy Couple</h5>
             <p class="text-muted mb-1">Happily married</p>
             <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
@@ -88,6 +95,10 @@
                 Message
               </button>
             </div>
+
+            <form action="/upload/<%= id %>" method="POST" enctype="multipart/form-data">
+              <input type="file" name="image" />
+              <button type="submit">Upload</button>
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">

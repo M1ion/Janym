@@ -15,6 +15,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    photoUrl: {
+        type: String,
+        default: '63f7098394e3b1341b14b877'
+    },
     coupleId:{
         type: String,
     },

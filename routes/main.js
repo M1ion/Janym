@@ -1,11 +1,8 @@
 const { Router } = require("express");
 const router = Router();
 const user = require("../models/user.js");
-const couple = require("../models/couple.js");
-const desire = require("../models/desire.js");
-const event = require("../models/event.js");
 const createError = require("http-errors");
-const mongodb = require("mongodb");
+const image = require("../models/image.js");
 
 router.get("/", async (req, res) => {
   console.log(Boolean(req.user));
@@ -19,7 +16,6 @@ router.get("/profile", async (req, res) => {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  console.log("/profile", userFound);
   let coupleFound = null;
   if (
     userFound.coupleId
@@ -29,6 +25,8 @@ router.get("/profile", async (req, res) => {
     console.log("coupleFound", coupleFound);
   }
 
+  const foundImage = await image.findById(userFound.photoUrl);
+
   res.render("Profile", {
     name: userFound.username,
     username: req.loggedIn,
@@ -37,6 +35,7 @@ router.get("/profile", async (req, res) => {
     couple: coupleFound,
     proposals: userFound.proposals,
     id: userFound._id,
+    image: foundImage,
   });
 });
 

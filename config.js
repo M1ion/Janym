@@ -55,6 +55,16 @@ const users = [
         username: 'Vladimir',
         password: 'Putin',
         email: 'Vladimir@gmail.com'
+    },
+    {
+        username: 'yerlan',
+        password: 'yerlan',
+        email: 'yerlan@gmail.com'
+    },
+    {
+        username: 'beka',
+        password: 'beka',
+        email: 'beka@gmail.com'
     }
 ];
 

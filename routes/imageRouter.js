@@ -7,6 +7,7 @@ const multer = require("multer");
 const process = require("process");
 const directory = path.join(__dirname + "/../uploads/");
 console.log(directory);
+const user = require("../models/user.js");
 
 
 const storage = multer.diskStorage({
@@ -20,6 +21,30 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+router.post("/:id", upload.single("image"), async (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/login");
+  }
+  const userFound = await user.findOne({ username: req.user.username });
+  const obj = {
+    name: req.body.name,
+    desc: req.body.desc,
+    img: {
+      data: fs.readFileSync(
+        path.join(directory + req.file.filename)
+      ),
+      contentType: "image/png",
+    },
+  };
+  const uploadedImage = await imgModel.create(obj);
+
+  userFound.photoUrl = uploadedImage._id;
+
+  await userFound.save();
+
+  res.redirect("/profile");
+});
 
 router.get("/", (req, res) => {
   imgModel.find({}, (err, items) => {
