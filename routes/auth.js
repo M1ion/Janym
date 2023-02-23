@@ -38,7 +38,7 @@ const signIn = async (req, res, next) => {
 
   res.cookie("accessToken", accessToken, { expiresIn: `${JWT_EXP}s` });
   res.cookie("refreshToken", refreshToken, { expiresIn: `${REFRESH_EXP}s` });
-  res.status(200).json({ message: "Successfully signed in!" });
+  res.redirect("/profile");
 };
 
 const signUp = async (req, res, next) => {
@@ -52,7 +52,8 @@ const signUp = async (req, res, next) => {
 
   try {
     const newUser = await User.create(user);
-    return res.status(200).json({ message: "Successfully signed up!", user: newUser });
+    // return res.status(200).json({ message: "Successfully signed up!", user: newUser });
+    res.redirect("/login");
   } catch (error) {
     if (error.name === "ValidationError") {
       let errors = {};
@@ -61,12 +62,12 @@ const signUp = async (req, res, next) => {
         errors[key] = error.errors[key].message;
       });
 
-      return res.status(400).send(errors);
+      next(createError(400, errors));
     } else if (error.code === 11000) {
         return res.status(400).send({ message: error.message });
     }
     console.log(error);
-    res.status(500).send("Something went wrong");
+    return next(createError(500, err));
   }
 };
 
@@ -84,7 +85,7 @@ const secretPage = (req, res, next) => {
 const signOut = (req, res, next) => {
   res.cookie("accessToken", "", { expiresIn: "0s" });
   res.cookie("refreshToken", "", { expiresIn: "0s" });
-  res.status(200).json({ message: "Successfully signed out!" });
+  res.redirect("/login");
 };
 
 const initDB = async (req, res, next) => {
@@ -127,7 +128,7 @@ const changeUser = async (req, res, next) => {
 
   const response = await User.update({ username: username }, user);
 
-  res.status(200).json({ message: "Successfully signed up!", response });
+  res.status(200).json({ message: "Successfully updated user!", response });
 };
 
 router.post("/sign_in", signIn);

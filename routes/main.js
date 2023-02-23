@@ -1,9 +1,9 @@
 const { Router } = require('express')
 const router = Router()
-const user = require('../models/user')
-const couple = require('../models/couple');
-const desire = require('../models/desire');
-const event = require('../models/event');
+const user = require('../models/user.js')
+const couple = require('../models/couple.js');
+const desire = require('../models/desire.js');
+const event = require('../models/event.js');
 const createError = require('http-errors');
 
 router.get('/', async (req, res) => {
@@ -14,11 +14,11 @@ router.get('/', async (req, res) => {
 router.get('/profile', async (req, res) => {
   // res.render('Profile');
   if (!req.user) {
-    return res.redirect('/auth/sign_in');
+    return res.redirect('/login');
   }
-  const user = await user.findById(req.user.username);
+  const userFound = await user.find({ username: req.user.username });
 
-  res.render('Profile', { user });
+  res.render('Profile', { userFound });
 })
 
 router.get('/couple', async (req, res) => {
