@@ -33,7 +33,7 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <% if (isLogged) { %>
+      <% if (typeof(username) !== 'undefined') { %>
       <li class="nav-item">
         <a
           class="nav-link text-info border border-info rounded pe-5 ps-5"
