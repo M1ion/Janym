@@ -1,3 +1,21 @@
 <% layout("layouts/standart") %>
-    <!DOCTYPE html>
-  
+<div class="container">
+  <h1>Couples</h1>
+  <div class="row">
+    <% for (let i = 0; i < users.length; i++) { %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="<%= users[i].photo %>" alt="User Photo">
+          <div class="card-body">
+            <h5 class="card-title"><%= users[i].username %></h5>
+            <p class="card-text"><%= users[i].email %></p>
+            <button class="btn btn-primary follow-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+      <% if ((i + 1) % 3 === 0) { %>
+        </div><div class="row">
+      <% } %>
+    <% } %>
+  </div>
+</div>

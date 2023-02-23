@@ -98,7 +98,8 @@ router.get("/follow/:id", async (req, res, next) => {
 });
 
 router.get("/couple", async (req, res) => {
-  res.render("Couple", { username: req.loggedIn, });
+  const users = await user.find({})
+  res.render("Couple", { users, username: req.loggedIn, });
 });
 
 router.get("/event", async (req, res) => {
