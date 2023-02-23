@@ -6,12 +6,6 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <!-- <img
-              src="<%= image %>"
-              alt="avatar"
-              class="rounded img-fluid"
-              style="width: 150px"
-            /> -->
             <img
               src="data:image/<%=image.img.contentType%>;base64,
 					<%=image.img.data.toString('base64')%>"
@@ -37,7 +31,8 @@
               <button type="submit">Upload</button> -->
               <label for="formFile" class="form-label">Upload image!</label>
               <input class="form-control" type="file" name="image" id="formFile"/>
-            </form>
+              <button type="submit" class="btn btn-info my-2">Upload</button>
+            </form> 
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">
