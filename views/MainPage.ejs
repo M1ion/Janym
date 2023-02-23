@@ -1,89 +1,128 @@
 <% layout("layouts/standart") %>
-  <!DOCTYPE html>
-  <div class="imageStyle">
-    <img src="../images/couple.jpg" alt="couples">
+<div class="imageStyle">
+  <img src="../images/couple1.jpg" alt="couples">
+</div>
+
+<section style="border-radius: 5%; position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; background-color: #eee; margin-top: 50px;">
+  <div class="d-flex container-fluid">
+    <img class="mt-4 ms-4 ps-5" src="../images/couple4.jpeg" alt="logo" style="max-width: 20em; object-fit: cover;">
+    <div>
+      <h3 class="mt-5 pt-3 ms-5">About us</h3>
+      <h5 class="mt-5 ms-5">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
+      </h5>
+    </div>
   </div>
+</section>
 
-  <section>
-    <div class="d-flex container-fluid">
-      <img class="mt-4  ms-4 ps-5" src="../images/couple4.jpeg" alt="logo" style="max-width: 20em;">
-      <div>
-        <h3 class="mt-5 pt-3 ms-5">About us</h3>
-        <h5 class="mt-5 ms-5">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-          consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
-        </h5>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!--
-
-    <section>
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <img src="" alt="logo" style="max-width: 200px;">
-        <p>Janym is a place for love, where you can boost it or find it. </p>
-      </div>
-    </section>
-    
-  -->
-  <section>
-    <h1 class="d-flex ms-5 ps-5 mt-5">Tutorial</h1>
-    <div class="d-flex container-fluid mt-5 mb-5">
-
-      <!--
-       <p>Here's a brief overview of the pages on our website:</p>
-
-     -->
-
-      <ul class="ms-5 ps-5">
-        <div class="col-md-6" style="width: 100%;">
-          <div class="row">
-            <div class="col-md-4">
-
-              <li>
-                <h4>Profile</h4>
-                <p>A page where you can view and edit your personal information and preferences.</p>
-                <a href="/profile" class="btn btn-danger">Go to Profile</a>
-              </li>
-            </div>
-           <!-- <div class="col-md-4">
-              <li>
-                <h4>Quiz</h4>
-                <p>A page where you can take a compatibility quiz to help find potential matches.</p>
-                <a href="/quiz" class="btn btn-danger">Take the Quiz</a>
-              </li>
-            </div>-->
-            <div class="col-md-4">
-              <li>
-                <h4>Couple</h4>
-                <p>A page where you can view your matches and connect with potential partners.</p> <a href="/couple"
-                  class="btn btn-danger">View Matches</a>
-              </li>
-            </div>
+<section style="margin-top: 100px">
+  <h1 class="d-flex ms-5 ps-5 mt-5">Tutorial</h1>
+  <div class="d-flex container-fluid mt-5 mb-5">
+    <ul class="ms-5 ps-5">
+      <div class="col-md-6" style="width: 100%;">
+        <div class="row">
+          <div class="col-md-6">
+            <li>
+              <h4>Profile</h4>
+              <p>A page where you can view and edit your personal information and preferences.</p>
+              <a href="/profile" class="btn btn-danger">Go to Profile</a>
+            </li>
+          </div>
+          <div class="col-md-6">
+            <li>
+              <h4>Couple</h4>
+              <p>A page where you can view your matches and connect with potential partners.</p>
+              <a href="/couple" class="btn btn-danger">View Matches</a>
+            </li>
           </div>
         </div>
-        <div class="col-md-6" style="width: 100%;">
-          <div class="row mt-5">
-            <div class="col-md-4">
-              <li>
-                <h4>Desires</h4>
-                <p>A page where you can view and express your desires and interests to help find like-minded
-                  individuals.</p>
-                <a href="/desires" class="btn btn-danger">View Desires</a>
-              </li>
-            </div>
-            <div class="col-md-4">
-              <li>
-                <h4>Event</h4>
-                <p>A page where you can view upcoming events and activities related to your interests and preferences.
-                </p>
-                <a href="/event" class="btn btn-danger">View Events</a>
-              </li>
-            </div>
+      </div>
+      <div class="col-md-6" style="width: 100%;">
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <li>
+              <h4>Desires</h4>
+              <p>A page where you can view and express your desires and interests to help find like-minded individuals.</p>
+              <a href="/desires" class="btn btn-danger">View Desires</a>
+            </li>
+          </div>
+          <div class="col-md-6">
+            <li>
+              <h4>Event</h4>
+              <p>A page where you can view upcoming events and activities related to your interests and preferences.</p>
+              <a href="/event" class="btn btn-danger">View Events</a>
+            </li>
           </div>
         </div>
-      </ul>
+      </div>
+    </ul>
+  </div>
+</section>
+
+<section class="bg-light py-5" style="background-color: #eee">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center mb-5">
+        <h2 class="font-weight-bold">Useful Information</h2>
+      </div>
     </div>
-  </section>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/love.jpg" class="card-img-top" alt="love">
+          <div class="card-body">
+            <h5 class="card-title">The Science of Love</h5>
+            <p class="card-text">Learn about the science behind love and what happens to your brain when you fall in love.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/communication.png" class="card-img-top" alt="communication">
+          <div class="card-body">
+            <h5 class="card-title">Communication in Relationships</h5>
+            <p class="card-text">Explore the importance of communication in healthy relationships and how to improve your communication skills.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/conflict.jpg" class="card-img-top" alt="conflict">
+          <div class="card-body">
+            <h5 class="card-title">Managing Conflict in Relationships</h5>
+            <p class="card-text">Discover strategies for resolving conflicts in relationships and learn how to turn conflict into an opportunity for growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/intimacy.png" class="card-img-top" alt="intimacy">
+          <div class="card-body">
+            <h5 class="card-title">Building Intimacy in Relationships</h5>
+            <p class="card-text">Learn about the different types of intimacy and how to build intimacy in your relationships.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/dating.png" class="card-img-top" alt="dating">
+          <div class="card-body">
+            <h5 class="card-title">Navigating the Dating Scene</h5>
+            <p class="card-text">Get tips for navigating the dating scene and finding the right partner for you.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../images/romance.jpg" class="card-img-top" alt="romance">
+          <div class="card-body">
+            <h5 class="card-title">Keeping Romance Alive</h5>
+            <p class="card-text">Discover ways to keep the romance alive in your relationship and make your partner feel loved and appreciated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

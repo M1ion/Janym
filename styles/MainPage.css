@@ -1,14 +1,18 @@
 .imageStyle {
     text-align: center;
     overflow: hidden;
-}
-
-.imageStyle img {
-    width: 40%;
-    height: 40%;
+    height: 625px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .imageStyle img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: 1;
-}
+  }
+  
 
 .MainPageLogo {
     padding-left: 3em;
@@ -133,7 +137,7 @@ label.radio input:checked+span {
     color: #828386;
 }
 footer {
-    background-color: #eef2f5;
+    background-color: white;
 }
 
 .text4i {
