@@ -6,10 +6,12 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
-<div class = "container mt-5 w-50 pt-3 pb-3 border rounded">
-
+<div class = "container mt-5 w-50 pt-3 pb-3 border rounded p-3 pe-4 ps-4 mb-5">
+  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 <form method="post" action="/auth/sign_up">
-  <div class="form-group">
+  <div class="d-flex justify-content-between">
+
+  <div class="form-group w-50 pe-3">
     <label class="mb-1" for="username">Username</label>
     <input
       type="text"
@@ -19,7 +21,7 @@
       name="username"
     />
   </div>
-  <div class="form-group">
+  <div class="form-group w-50 ps-3">
     <label class ="mb-1"for="password">Password</label>
     <input
       type="password"
@@ -29,7 +31,31 @@
       name="password"
     />
   </div>
-  <div class="form-group ">
+ </div>
+ <div class="d-flex justify-content-between mb-3">
+
+ <div class="form-group w-50 pe-3">
+  <label for="firstName">First Name</label>
+  <input
+    type="firstname"
+    class="form-control"
+    id="firstName"
+    placeholder="Enter First Name"
+    name="firstName"
+  />
+</div>
+<div class="form-group w-50 ps-3 ">
+  <label for="lastName">Last Name</label>
+  <input
+    type="lastName"
+    class="form-control"
+    id="lastName"
+    placeholder="Enter Last Name"
+    name="lastName"
+  />
+</div>
+ </div>
+  <div class="form-group mb-3">
     <label for="email">Email address</label>
     <input
       type="email"
@@ -39,32 +65,45 @@
       name="email"
     />
   </div>
-  <div class="form-group ">
-    <label for="firstName">First Name</label>
-    <input
-      type="firstname"
-      class="form-control"
-      id="firstName"
-      placeholder="Enter First Name"
-      name="firstName"
-    />
-  </div>
-  <div class="form-group ">
-    <label for="lastName">Last Name</label>
-    <input
-      type="lastName"
-      class="form-control"
-      id="lastName"
-      placeholder="Enter Last Name"
-      name="lastName"
-    />
-  </div>
+<!--
   <div class="form-group">
     <label for="DateOfBirth">Date Of Birth</label>
     <input type="text" class="form-control" id="datepicker" placeholder="Enter Date Of Birth" name="DateOfBirth" readonly>
   </div>
   
-  <div class="form-group">
+
+-->  
+  <div class="md-form md-outline input-with-post-icon datepicker mb-3">
+    <label for="DateOfBirth">Date Of Birth</label>
+    <input placeholder="Select date" type="date" id="datepicker" class="form-control" name="DateOfBirth">
+  </div>
+  <div class="d-flex justify-content-between mb-3">
+  
+    <div class="form-group w-50 pe-3">
+      <label for="socalMedia">Socal Media</label>
+      <input
+        type="socalMedia"
+        class="form-control"
+        id="socalMedia"
+        placeholder="Enter uri for your social media"
+        name="socalMedia"
+      />
+    </div>
+    <div class="form-group w-50 ps-3">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="phoneNumber"
+        class="form-control"
+        id="phoneNumber"
+        placeholder="Enter phone number"
+        name="phoneNumber"
+      />
+    </div>
+  </div>
+  <div class="d-flex justify-content-between mb-3">
+
+
+  <div class="form-group " style="width:6em">
     <label for="gender">Gender</label>
     <select class="form-control" id="gender" name="gender">
       <option value="male">Male</option>
@@ -82,8 +121,9 @@
       name="country"
     />
   </div>
+
   <div class="form-group ">
-    <label for="city">city</label>
+    <label for="city">City</label>
     <input
       type="city"
       class="form-control"
@@ -92,26 +132,9 @@
       name="city"
     />
   </div>
-  <div class="form-group ">
-    <label for="socalMedia">Socal Media</label>
-    <input
-      type="socalMedia"
-      class="form-control"
-      id="socalMedia"
-      placeholder="Enter uri for your social media"
-      name="socalMedia"
-    />
-  </div>
-  <div class="form-group ">
-    <label for="phoneNumber">Phone Number</label>
-    <input
-      type="phoneNumber"
-      class="form-control"
-      id="phoneNumber"
-      placeholder="Enter phone number"
-      name="phoneNumber"
-    />
-  </div>
+</div>
+
+
   <div class="form-group ">
     <label for="bio">BIO</label>
     <input
@@ -139,4 +162,3 @@
       });
     });
   </script>
-  
