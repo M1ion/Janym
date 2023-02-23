@@ -94,6 +94,7 @@
       </div>
       <div class="col-lg-8">
         <div class="card mb-4">
+          <p class="display-6">My info ℹ️</p>
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
@@ -128,62 +129,70 @@
               </div>
             </div>
           </div>
-          <table>
-            <% for (let i = 0; i < proposals.length; i++) { %>
-            <tr>
-              <td>
-                <p class="mb-0">Proposal <%= i + 1 %></p>
-              </td>
-              <td>
-                <p class="mb-0"><%= proposals[i].username %></p>
-              </td>
-              <!-- Accept /accept/:id GET a href -->
-              <td>
-                <a href="/accept/<%= proposals[i]._id %>">Accept</a>
-              </td>
-              <!-- Decline /decline/:id GET a href -->
-              <td>
-                <a href="/decline/<%= proposals[i]._id %>">Decline</a>
-              </td>
-            </tr>
-            <% } %>
-          </table>
+        </div>
 
-          <% if (couple) { %>
-          <div class="card-body">
+        <div class="card mb-4">
+          <div class="container">
+            <table>
+              <% for (let i = 0; i < proposals.length; i++) { %>
+              <tr>
+                <td>
+                  <p class="mb-0">Proposal <%= i + 1 %></p>
+                </td>
+                <td>
+                  <p class="mb-0"><%= proposals[i].username %></p>
+                </td>
+                <!-- Accept /accept/:id GET a href -->
+                <td>
+                  <a href="/accept/<%= proposals[i]._id %>">Accept</a>
+                </td>
+                <!-- Decline /decline/:id GET a href -->
+                <td>
+                  <a href="/decline/<%= proposals[i]._id %>">Decline</a>
+                </td>
+              </tr>
+              <% } %>
+            </table>
+          </div>
+        </div>
+
+        <% if (couple) { %>
+        <div class="card mb-4">
             <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
+              <p class="display-6">My dear couple ❤️</p>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Full Name</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <!-- <p class="text-muted mb-0">Gennadyi Golovkin </p> -->
+                    <p><%= couple.username %></p>
+                  </div>
                 </div>
-                <div class="col-sm-9">
-                  <!-- <p class="text-muted mb-0">Gennadyi Golovkin </p> -->
-                  <p><%= couple.username %></p>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><%= couple.email %></p>
+                  </div>
                 </div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= couple.email %></p>
-                </div>
-              </div>
-              <hr />
-              <!-- Password -->
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Password</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0"><%= couple.password %></p>
+                <hr />
+                <!-- Password -->
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Password</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><%= couple.password %></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <% } %>
         </div>
+        <% } %>
 
         <div class="row">
           <% for (let i = 0; i < events.length; i++) { %>
