@@ -44,7 +44,7 @@ const userSchema = new Schema({
     },
     photoUrl: {
         type: String,
-        default: '63f7098394e3b1341b14b877'
+        default: '63f71fbb2b9122483fc2aee6'
     },
     coupleId:{
         type: String,
