@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const user = require("../models/user.js");
+const event = require("../models/event.js")
 const createError = require("http-errors");
 const image = require("../models/image.js");
 
@@ -103,7 +104,8 @@ router.get("/couple", async (req, res) => {
 });
 
 router.get("/event", async (req, res) => {
-  res.render("Event", { username: req.loggedIn });
+  const events = await event.find({})
+  res.render("Event", { events, username: req.loggedIn });
 });
 
 router.get("/desires", async (req, res) => {
