@@ -16,7 +16,7 @@ const userSchema = new Schema({
         required: true
     },
     coupleId:{
-        type: {type: ObjectId, ref: 'user'},
+        type: String,
     },
     proposals: [{
         type: {type: ObjectId, ref: 'user'},

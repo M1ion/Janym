@@ -5,10 +5,11 @@ const couple = require("../models/couple.js");
 const desire = require("../models/desire.js");
 const event = require("../models/event.js");
 const createError = require("http-errors");
+const mongodb = require("mongodb");
 
 router.get("/", async (req, res) => {
   console.log(Boolean(req.user));
-  res.render("MainPage", { username: req.loggedIn, });
+  res.render("MainPage", { username: req.loggedIn });
 });
 
 // isAuth добавить: router.get('', isAuth, async (req, res) => {
@@ -18,19 +19,18 @@ router.get("/profile", async (req, res) => {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  console.log('/profile', userFound);
+  console.log("/profile", userFound);
   let coupleFound = null;
   if (
-    userFound.coupleId &&
-    Object.keys(userFound.coupleId).length > 0 &&
-    userFound.coupleId.constructor === Object
+    userFound.coupleId
   ) {
     console.log("coupleId", userFound.coupleId);
-    coupleFound = await user.findOne({ _id: userFound.coupleId });
+    coupleFound = await user.findById(userFound.coupleId);
     console.log("coupleFound", coupleFound);
   }
 
   res.render("Profile", {
+    name: userFound.username,
     username: req.loggedIn,
     email: userFound.email,
     password: userFound.password,
@@ -40,12 +40,12 @@ router.get("/profile", async (req, res) => {
   });
 });
 
-router.get('/accept/:id', async (req, res, next) => {
+router.get("/accept/:id", async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  console.log('/accept/:id', JSON.stringify(userFound));
+  console.log("/accept/:id", JSON.stringify(userFound));
   let found = false;
   for (let proposal of userFound.proposals) {
     console.log(proposal);
@@ -56,7 +56,7 @@ router.get('/accept/:id', async (req, res, next) => {
   }
   if (!found) return next(createError(400, "You don't have this proposal"));
   const coupleFound = await user.findById(req.params.id);
-  console.log('/accept/:id', JSON.stringify(coupleFound));
+  console.log("/accept/:id", JSON.stringify(coupleFound));
   userFound.coupleId = coupleFound._id;
   userFound.proposals = [];
   await userFound.save();
@@ -66,19 +66,20 @@ router.get('/accept/:id', async (req, res, next) => {
   res.redirect(req.get("referer"));
 });
 
-router.get('/decline/:id', async (req, res, next) => {
+router.get("/decline/:id", async (req, res, next) => {
   if (!req.user) {
     return res.redirect("/login");
   }
   const userFound = await user.findOne({ username: req.user.username });
-  const coupleFound = await user.findOne({ _id: req.params.id });
-  coupleFound.proposals = coupleFound.proposals.filter(
-    (proposal) => JSON.stringify(proposal._id) != JSON.stringify(userFound._id)
+  userFound.proposals = userFound.proposals.filter(
+    // (proposal) => proposal._id != mongoose.Types.ObjectId(req.params.id)
+    (proposal) => {
+      return proposal._id.toString() != req.params.id;
+    }
   );
-  await coupleFound.save();
+  await userFound.save();
   res.redirect(req.get("referer"));
 });
-  
 
 router.get("/follow/:id", async (req, res, next) => {
   if (!req.user) {
@@ -98,34 +99,34 @@ router.get("/follow/:id", async (req, res, next) => {
 });
 
 router.get("/couple", async (req, res) => {
-  const users = await user.find({})
-  res.render("Couple", { users, username: req.loggedIn, });
+  const users = await user.find({});
+  res.render("Couple", { users, username: req.loggedIn });
 });
 
 router.get("/event", async (req, res) => {
-  res.render("Event", { username: req.loggedIn, });
+  res.render("Event", { username: req.loggedIn });
 });
 
 router.get("/desires", async (req, res) => {
-  res.render("Desires", { username: req.loggedIn, });
+  res.render("Desires", { username: req.loggedIn });
 });
 
 router.get("/quiz", async (req, res) => {
-  res.render("Quiz", { username: req.loggedIn, });
+  res.render("Quiz", { username: req.loggedIn });
 });
 
 router.get("/login", async (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
   }
-  res.render("Login", { username: req.loggedIn, });
+  res.render("Login", { username: req.loggedIn });
 });
 
 router.get("/register", async (req, res) => {
   if (req.user) {
     return res.redirect("/profile");
   }
-  res.render("Registration", { username: req.loggedIn, });
+  res.render("Registration", { username: req.loggedIn });
 });
 
 module.exports = router;
