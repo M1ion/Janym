@@ -134,7 +134,10 @@ label.radio input:checked+span {
     font-weight: 500;
     color: #828386;
 }
-.container{ 	background-color: #eef2f5; 	width: 400px; }
+footer {
+    background-color: #eef2f5;
+}
+
 .text4i {
     color: #00a5f4;
 }
